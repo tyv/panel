@@ -1,0 +1,36 @@
+block('app')(
+
+    js()(true),
+
+    content()(function() {
+        return [
+            this.ctx.name,
+            {
+                elem: 'control',
+                content: [
+                    {
+                        block: 'button',
+                        mods: {
+                            for: 'app',
+                            action: 'kill',
+                            disabled: this.ctx.instances ? false : 'yes'
+                        },
+                        text: '-'
+                    },
+                    {
+                        block: 'button',
+                        mods: {
+                            for: 'app',
+                            action: 'run'
+                        },
+                        text: '+'
+                    }
+
+                ]
+            }
+        ]
+    }),
+
+    tag()('li')
+
+)

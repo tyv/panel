@@ -1,0 +1,43 @@
+.control-pane
+    margin-top 65px
+    text-align center
+
+    user-select none
+
+    & .button
+        margin-right 20px
+
+        transition opacity 0.2s, color 0.2s;
+
+    & .button__icon
+        font normal 45px/60px Menlo, monospace
+
+        display inline-block
+
+        width 60px
+
+        border 3px solid #fff
+        border-radius 60px
+        transition border-color 0.2s;
+
+    & .button__text
+        font normal 12px/12px Verdana, sans-seirf;
+
+        display block
+
+        margin-top 20px
+
+    & .button_type_add:not(:disabled):hover
+        color positive_color
+
+    & .button_type_add:not(:disabled):hover .button__icon
+        border-color positive_color
+
+    & .button_type_destroy:not(:disabled):hover
+        color attention_color
+
+    & .button_type_destroy:not(:disabled):hover .button__icon
+        border-color attention_color
+
+    & .button_disabled_yes
+        opacity 0.4

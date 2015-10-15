@@ -1,0 +1,36 @@
+block('control-pane')(
+    js()(true),
+
+    content()(function() {
+
+        return [
+            {
+                block: 'button',
+                mods: {
+                    for: 'control-pane',
+                    type: 'add'
+                },
+                icon: {
+                    elem: 'icon',
+                    content: '+',
+                    tag: 'span'
+                },
+                text: 'Add server'
+            },
+            {
+                block: 'button',
+                mods: {
+                    for: 'control-pane',
+                    type: 'destroy'
+                },
+                icon: {
+                    elem: 'icon',
+                    content: '-',
+                    tag: 'span'
+                },
+                text: 'Destroy'
+            }
+        ]
+
+    })
+);

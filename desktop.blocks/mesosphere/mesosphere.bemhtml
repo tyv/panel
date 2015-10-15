@@ -1,0 +1,8 @@
+block('mesosphere')(
+    js()(function() {
+        return {
+            servers: this._data.servers,
+            runnedApps: this._data.runnedAps
+        }
+    })
+)

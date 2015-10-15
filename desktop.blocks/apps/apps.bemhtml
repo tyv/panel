@@ -1,0 +1,34 @@
+block('apps')(
+    content()(function() {
+        var list,
+            data = this._data.app_storage,
+            isData = Boolean(data.length),
+            apps = [{
+                elem: 'title',
+                content:  'Available Apps'
+            }];
+
+        if (isData) {
+
+            apps.push({
+                elem: 'list',
+                content: data.map(function(app) {
+                    return {
+                        block: 'app',
+                        mods: { id: app.id },
+                        instances: this._data.runnedAps[app.id],
+                        name: app.name
+                    }
+                }, this)
+            })
+
+        } else {
+            apps[0].content = 'No Apps'
+        }
+
+        return apps
+    }),
+
+    elem('title').tag()('h1'),
+    elem('list').tag()('ul')
+);

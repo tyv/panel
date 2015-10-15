@@ -1,0 +1,58 @@
+block('server')(
+
+    def()(function() {
+        var that = this;
+
+        this.ctx.js = { apps : [] };
+        this.ctx.mods = this.ctx.mods || { };
+
+        function getAppDetails(app) {
+            var appsStorage = that._data.app_storage;
+
+            for (var i = 0; i <= appsStorage.length; i++) {
+                if (appsStorage[i].id == app.id) return that._.extend(appsStorage[i], app);
+            }
+        };
+
+        if (this.ctx.mods.apps != 0) {
+            this.ctx.content = {
+                elem: 'apps',
+                content: this.ctx.apps.map(function(app) {
+                        var appDetails = getAppDetails(app);
+
+                        that.ctx.js.apps.push(appDetails);
+                        that.ctx.mods[appDetails.id] = appDetails.timestamp;
+
+                        return {
+                            elem: 'app',
+                            elemMods: { type: appDetails.id },
+                            content: [{
+                                elem: 'app-abbr',
+                                content: appDetails.abbr
+                            },
+                            {
+                                elem: 'app-name',
+                                content: appDetails.name
+                            },
+                            {
+                                elem: 'app-timestamp',
+                                content: appDetails.timestamp
+                            }]
+                        }
+                    })
+            };
+        }
+
+        return applyCtx(this.ctx);
+
+    }),
+
+
+    tag()('li'),
+    elem('apps').tag()('ul'),
+    elem('app').tag()('li'),
+    elem('app-abbr').tag()('h3'),
+    elem('app-name').tag()('h4'),
+    elem('app-timestamp').tag()('p')
+
+);

@@ -1,0 +1,134 @@
+.server
+    display inline-block
+
+    position relative
+
+    width 200px
+    height 140px
+    margin 0 20px 20px 0
+
+    vertical-align top
+
+    background panel_color
+    border-radius 3px
+
+    &__apps
+        position absolute
+
+        width 100%
+        height 100%
+
+        white-space nowrap
+
+    &__app
+        display inline-block
+
+        width 100%
+        height 100%
+        padding 25px 5px 5px 5px
+
+        box-sizing border-box
+
+        border-radius 3px
+
+        text-align center
+
+    &__app-abbr
+        font-size 28px
+        line-height initial
+
+    &__app-name
+        margin-top 15px
+
+    &__app-timestamp
+        font-size 12px
+        line-height initial
+
+        margin-top 10px
+
+        color #000
+
+    &_apps_2 &__app
+        display block
+        height 50%
+
+        padding 8px 2px 2px 2px
+
+    &_apps_2 &__app:first-child
+        border-radius 3px 3px 0 0
+
+    &_apps_2 &__app:last-child
+        border-radius 0 0 3px 3px
+
+    &_apps_2 &__app-abbr
+        font-size 14px
+        font-weight bold
+        line-height initial
+
+    &_apps_2 &__app-name
+        font-size 14px
+        margin-top 5px
+
+    &_apps_2 &__app-timestamp
+        font-size 11px
+        line-height initial
+
+        margin-top 0
+
+        color #000
+
+    &_state_loading:before
+        position absolute
+        z-index 1
+        width 100%
+        height 100%
+
+        background rgba(0,0,0,0.8)
+
+        content: ""
+
+    &_state_loading:after
+        position absolute
+        left 50%
+        top 50%
+        z-index 2
+
+        width 20px
+        height 20px
+        margin -10px 0 0 -10px
+
+        border 2px dashed #000
+        border-radius 50%
+        border-color #fc0
+
+        animation spin_theme_simple 2s infinite linear;
+
+        content: ""
+
+    &__app_type_hadoop
+        background app_hadoop_gradient
+
+    &__app_type_rails
+        background app_rails_gradient
+
+    &__app_type_chronos
+        background app_chronos_gradient
+
+    &__app_type_storm
+        background app_storm_gradient
+
+    &__app_type_spark
+        background app_spark_gradient
+
+
+@keyframes spin_theme_simple
+{
+    from
+    {
+        transform: rotate(0);
+    }
+    to
+    {
+        transform: rotate(360deg);
+    }
+}

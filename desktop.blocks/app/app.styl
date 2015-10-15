@@ -1,0 +1,57 @@
+.app
+    position relative
+
+    padding 25px 30px
+
+    background #141414
+    border-left 5px solid transparent
+    border-bottom 1px solid panel_color
+
+    user-select none
+
+    &__control
+        position absolute
+        overflow hidden
+        top 50%
+        right -15px
+
+        transform translateY(-50%)
+
+    & .button
+        font normal 25px/26px Menlo, monospace
+
+        display inline-block
+
+        margin-left 10px
+        width 30px
+
+        border-radius 30px
+        box-sizing border-box
+
+        transition transform 0.2s, opacity 0.2s
+
+    & .button_action_kill
+        border 2px solid kill_button_color
+        color kill_button_color
+
+    & .button_action_run
+        line-height 30px
+
+    & .button_disabled_yes
+        transform translateY(-100%)
+        opacity 0
+
+    &_id_hadoop .button_action_run
+        background app_hadoop_gradient
+
+    &_id_rails .button_action_run
+        background app_rails_gradient
+
+    &_id_chronos .button_action_run
+        background app_chronos_gradient
+
+    &_id_storm .button_action_run
+        background app_storm_gradient
+
+    &_id_spark .button_action_run
+        background app_spark_gradient

@@ -1,0 +1,67 @@
+match(this._mode === '', !this._data)(function() {
+    var date = new Date();
+
+    this._data = {
+        app_storage: [
+            {
+                id: 'hadoop',
+                name: 'Hadoop',
+                abbr: 'Hd'
+            },
+            {
+                id: 'rails',
+                name: 'Rails',
+                abbr: 'Rl'
+            },
+            {
+                id: 'chronos',
+                name: 'Chronos',
+                abbr: 'Ch'
+            },
+            {
+                id: 'storm',
+                name: 'Storm',
+                abbr: 'St'
+            },
+            {
+                id: 'spark',
+                name: 'Spark',
+                abbr: 'Sp'
+            }
+        ],
+
+        servers: [
+            {
+                apps: [{ id: 'spark', timestamp: date.valueOf() }, {id: 'chronos', timestamp:  Date.now() }]
+            },
+            {
+                apps: [{id: 'chronos', timestamp:  Date.now() }]
+            },
+            {
+                apps: []
+            },
+            {
+                apps: []
+            }
+        ]
+    };
+
+    this._data.runnedAps = (function() {
+        var runned = {};
+
+        this._data.servers.forEach(function(server) {
+            server.apps.forEach(function(app) {
+
+                if (runned[app.id]) {
+                    runned[app.id] = runned[app.id] + 1;
+                } else {
+                    runned[app.id] = 1;
+                }
+            })
+        })
+
+        return runned;
+    }).bind(this)();
+
+    return applyCtx(this.ctx);
+})

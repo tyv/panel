@@ -1,0 +1,29 @@
+.button
+    font inherit
+    margin 0
+    padding 0
+
+    color inherit
+    border none
+    background transparent
+
+    cursor pointer
+
+    &_disabled_yes
+        cursor default
+
+
+    &:focus
+        outline none
+
+    &:active,
+    &:focus:active
+        outline none
+        box-shadow none
+
+    &::-moz-focus-inner
+    {
+        padding: 0;
+
+        border: 0;
+    }

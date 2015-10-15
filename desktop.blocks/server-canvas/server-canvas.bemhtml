@@ -1,0 +1,41 @@
+block('server-canvas')(
+
+    js()(true),
+
+    content()(function() {
+
+        var servers = this._data.servers,
+            content = [{
+                elem: 'title',
+                content: 'Server Canvas'
+            }];
+
+
+        if (servers.length) {
+
+            content.push({
+                elem: 'list',
+                content: servers.map(function(server) {
+
+                    var appsNum = server.apps.length;
+
+                    return {
+                        block: 'server',
+                        mods: { apps: appsNum },
+                        apps: server.apps
+                    }
+                })
+            });
+
+        } else {
+
+            content.push('No servers');
+
+        }
+
+        return content;
+    }),
+
+    elem('title').tag()('h1'),
+    elem('list').tag()('ul')
+)
